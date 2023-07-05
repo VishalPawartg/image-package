@@ -12,7 +12,7 @@
             "email": "vishal.pawarTG@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "beta",
     "autoload": {
         "psr-4": {
             "Vishal\\ImageConvert\\": "src/"
