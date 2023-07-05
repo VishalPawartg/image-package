@@ -5,9 +5,6 @@
     "require": {
         "intervention/image": "^2.5"
     },
-    "require-dev": {
-        "intervention/image": "^2.5"
-    },
     "license": "MIT",
     "authors": [
         {
