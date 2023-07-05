@@ -1,5 +1,5 @@
 {
-    "name": "vishal/image-convert",
+    "name": "vishal-pawar/image-convert",
     "description": "this package can convert you image into webp and desired resolution",
     "type": "library",
     "require": {
