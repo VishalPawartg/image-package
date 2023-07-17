@@ -17,7 +17,7 @@ class ImageServiceProvider extends ServiceProvider
         );
 
         $this->publishes([
-            __DIR__.'/config/image.php' => config_path('ImageConvert.php'),
+            __DIR__.'/config/ImageConvert.php' => config_path('ImageConvert.php'),
         ]);
 
     }
