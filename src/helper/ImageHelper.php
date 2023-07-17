@@ -1,5 +1,5 @@
 <?php
-namespace Vishal\ImageConvert;
+namespace VishalPawar\ImageConvert;
 use Intervention\Image\ImageManagerStatic as Images;
 
 class ImageHelper{
