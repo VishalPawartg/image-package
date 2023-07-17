@@ -13,7 +13,7 @@ class ImageHelper{
      */
     public static function saveImage($path , $image )
     {
-        //config('ImageConvert.aws_path');
+       // return config('ImageConvert.aws_path');
         // return "bye world";
         try{
             if (!is_dir($path)) {

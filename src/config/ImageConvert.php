@@ -13,9 +13,14 @@ return [
     |
      */
 
-    'aws_path' => "awspath.com",
-
-    'providers' => [
-
+    'do_spaces'    => [
+        'driver'   => 's3',
+        'key'      => env('DO_KEY'),
+        'secret'   => env('DO_SECRET'),
+        'region'   => env('DO_REGION'),
+        'bucket'   => env('DO_BUCKET'),
+        "endpoint" => env("DO_ENPOINT"),
     ],
+
+    
 ];
