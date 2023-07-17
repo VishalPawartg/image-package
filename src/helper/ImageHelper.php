@@ -15,13 +15,13 @@ class ImageHelper{
      */
     public static function saveImage($path , $image , $objectStore )
     {
-        return config('ImageConvert.aws_path');
+        return config('ImageConvert.do_spaces.originendpoint');
         // return "bye world";
         try{
             if($objectStore){
 
                 $url = Storage::disk('do_spaces')->putFile($path , $image , 'public');
-
+                \Log::info($url);
                 return config('ImageConvert.do_spaces.originendpoint').$url;
 
             }else{
