@@ -1,6 +1,6 @@
 <?php
 
-namespace Vishal\ImageConvert;
+namespace VishalPawar\ImageConvert;
 
 use Illuminate\Support\ServiceProvider;
 
