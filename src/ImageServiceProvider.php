@@ -13,11 +13,11 @@ class ImageServiceProvider extends ServiceProvider
         require_once(__DIR__.'/helper/ImageHelper.php');
 
         $this->mergeConfigFrom(
-            __DIR__.'/config/image.php', 'ImageConvert'
+            __DIR__.'/config/ImageConvert.php', 'ImageConvert'
         );
 
         $this->publishes([
-            __DIR__.'/config/image.php' => config_path('image.php'),
+            __DIR__.'/config/image.php' => config_path('ImageConvert.php'),
         ]);
 
     }
