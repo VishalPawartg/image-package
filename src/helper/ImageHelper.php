@@ -1,5 +1,7 @@
 <?php
 namespace VishalPawar\ImageConvert;
+
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Images;
 
 class ImageHelper{
@@ -11,27 +13,36 @@ class ImageHelper{
      * @param [String] $unique_name
      * @return void
      */
-    public static function saveImage($path , $image )
+    public static function saveImage($path , $image , $objectStore )
     {
-       // return config('ImageConvert.aws_path');
+        return config('ImageConvert.aws_path');
         // return "bye world";
         try{
-            if (!is_dir($path)) {
-                //Directory does not exist, so lets create it.
-                mkdir($path, 0755, true);
+            if($objectStore){
+
+                $url = Storage::disk('do_spaces')->putFile($path , $image , 'public');
+
+                return config('ImageConvert.do_spaces.originendpoint').$url;
+
+            }else{
+                if (!is_dir($path)) {
+                    //Directory does not exist, so lets create it.
+                    mkdir($path, 0755, true);
+                }
+    
+                $imageStoreName = str_replace(' ','',$image->getClientOriginalName());
+    
+                $image = Images::make($image->getRealPath());
+    
+                $image->save(public_path($path . $imageStoreName));
+    
+                return $path.$imageStoreName;
+
             }
-
-            $imageStoreName = str_replace(' ','',$image->getClientOriginalName());
-
-            $image = Images::make($image->getRealPath());
-
-            $image->save(public_path($path . $imageStoreName));
-
-            return $path.$imageStoreName;
 
         }catch(\Exception $e){
             \Log::error($e->getMessage());
-
+            return $e->getMessage();
         }
     }
 
