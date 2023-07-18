@@ -41,11 +41,10 @@ class ImageHelper{
                 return DOFULLENDPOINT.$path;
 
             }else{
-                
-                ImageHelper::createDirectory($path);
-
                 $newPath = $path.'/';
-    
+                
+                ImageHelper::createDirectory($newPath);
+
                 $imageStoreName = str_replace(' ','',$image->getClientOriginalName());
     
                 $image = Images::make($image->getRealPath());
@@ -94,15 +93,16 @@ class ImageHelper{
 
             }else{
 
+            $newPath = $path.'/';
             //create Directory
-            ImageHelper::createDirectory($path);
+            ImageHelper::createDirectory($newPath);
 
             //save mobile list image
             $image = Images::make($image->getRealPath());
             $image->resize($height , $width);
-            $image->save(public_path($path . $imageStoreName));
+            $image->save(public_path($$newPath . $imageStoreName));
 
-            return $path.$imageStoreName;
+            return $newPath.$imageStoreName;
             }
 
         }catch(\Exception $e){
@@ -136,16 +136,17 @@ class ImageHelper{
 
             }else{
 
-                //create Directory
-                ImageHelper::createDirectory($path);
+                $newPath = $path.'/';
 
+                //create Directory
+                ImageHelper::createDirectory($newPath);
 
                 //save mobile list image webp
                 $saveImage = Images::make($image);
                 $saveImage->encode('webp');
-                $saveImage->save(public_path($path . $imageStoreName));
+                $saveImage->save(public_path($newPath . $imageStoreName));
                 
-                return $path.$imageStoreName;
+                return $newPath.$imageStoreName;
             }
 
         }catch(\Exception $e){
@@ -186,21 +187,24 @@ class ImageHelper{
                 return DOFULLENDPOINT.$path;
 
             }else{
+
+            $newPath = $path.'/';
+            
             //create Directory
-            ImageHelper::createDirectory($path);
+            ImageHelper::createDirectory($newPath);
 
 
             //save mobile list image webp
             $imageStore = Images::make($image);
             $imageStore->encode('webp')->resize($height, $width);
-            $imageStore->save(public_path($path . $imageStoreName));
+            $imageStore->save(public_path($newPath . $imageStoreName));
             
-            return $path.$imageStoreName;
+            return $newPath.$imageStoreName;
             }
 
         }catch(\Exception $e){
             \Log::error($e->getMessage());
-
+            return $e->getMessage();
         }
     }
 
